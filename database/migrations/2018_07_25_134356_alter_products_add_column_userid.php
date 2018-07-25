@@ -14,7 +14,6 @@ class AlterProductsAddColumnUserid extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
