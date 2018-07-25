@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('categories', 'CategoryController');
 	Route::post('search', 'CategoryController@search');
 
+	Route::get('users', 'UserController@index');
+
 });
 
 //Route::get('categorie/{id}', 'CategoryController@destroy');

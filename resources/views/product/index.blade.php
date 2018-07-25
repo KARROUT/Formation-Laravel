@@ -28,6 +28,7 @@
    		<tr>
    			<th>Label</th>
    			<th>Description</th>
+        <th>User</th>
    			<th></th>
    		</tr>
    	</thead>
@@ -36,6 +37,7 @@
 	   		<tr>
 	   			<td>{{ $product->label }}</td>
 	   			<td>{{ $product->description }}</td>
+          <td>{{ $product->user->name }}</td>
 	   			<td class="text-right">
 	   				
                     

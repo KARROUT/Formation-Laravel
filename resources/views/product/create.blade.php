@@ -25,6 +25,19 @@
 				<label for="description">Description</label>
 				<textarea class="form-control" name="description" cols="30" rows="4" id="description"></textarea>
 			</div>
+
+            
+           <!-- <div class="form-group">
+            	<label for="user">User</label>
+            	<select name="user" id="user" class="form-control">
+					<option value="">Séléctionner un Utilisateur</option>
+
+					@foreach($users as $user)
+					<option value="{{ $user->id }}">{{ $user->name }}</option>
+					@endforeach
+				</select>
+            </div> -->
+			
             
            <!-- <div class="form-check">
 			  <input name="active" class="form-check-input" type="checkbox" id="active" value="1">

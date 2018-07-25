@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Product, App\User;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -13,8 +14,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $products = Product::all();
+    {   
+        if(Auth::user()->profile == 'user') {
+           $products = Product::where('user_id', Auth::user()->id)->get();   
+        }
+        else {
+           $products = Product::all();
+        }
+        
         return view('product.index', ['products' => $products]);
     }
 
@@ -25,7 +32,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $users = User::all();
+        return view('product.create', compact('users'));
     }
 
     /**
@@ -36,7 +44,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
+
        $request->validate([
         'label'       => 'required|min:2|max:10',
         'description' => 'required'
@@ -46,7 +54,7 @@ class ProductController extends Controller
 
        $Product->label       = $request->input('label');
        $Product->description = $request->input('description');
-       
+       $Product->user_id     = Auth::user()->id;
 
        $Product->save();
 
